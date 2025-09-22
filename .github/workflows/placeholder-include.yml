@@ -1,0 +1,28 @@
+on: 
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '**.yaml'    
+
+jobs:
+  includes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🤘 checkout
+        uses: actions/checkout@v2
+
+      - name: +Mᐁ includes
+        uses: devlooped/actions-include@v1
+
+      - name: ✍ pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          add-paths: '**.md'
+          base: main
+          branch: markdown-includes
+          delete-branch: true
+          labels: docs
+          commit-message: +Mᐁ includes
+          title: +Mᐁ includes
+          body: +Mᐁ includes
